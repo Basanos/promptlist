@@ -649,3 +649,96 @@
 /v3/endpoint/{namespace}/{name}/logs
 /v3/endpoint/{namespace}/{name}/logs/download
 /v3/endpoint/{namespace}/{name}/logs/sse
+
+# ============================================================
+# 2026 additions (researched 2026-10-14 against official vendor docs/OpenAPI specs)
+# ============================================================
+
+# AWS Bedrock AgentCore Data Plane (2026 additions)
+/runtimes/{agentRuntimeArn}/invocations
+/runtimes/{agentRuntimeArn}/invocations/.well-known/agent-card.json
+/runtimes/{agentRuntimeArn}/stopruntimesession
+/memories/{memoryId}/events
+/memories/{memoryId}/retrieve
+/memories/{memoryId}/actors
+/memories/{memoryId}/actor/{actorId}/sessions
+/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}
+/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}/events/{eventId}
+/memories/{memoryId}/memoryRecord/{memoryRecordId}
+/memories/{memoryId}/memoryRecords
+/memories/{memoryId}/memoryRecords/{memoryRecordId}
+/memories/{memoryId}/memoryRecords/batchCreate
+/memories/{memoryId}/memoryRecords/batchUpdate
+/memories/{memoryId}/memoryRecords/batchDelete
+/memories/{memoryId}/extractionJobs/start
+/browsers/{browserIdentifier}/sessions/start
+/browsers/{browserIdentifier}/sessions/get
+/browsers/{browserIdentifier}/sessions/list
+/browsers/{browserIdentifier}/sessions/stop
+/browsers/{browserIdentifier}/sessions/invoke
+/code-interpreters/{codeInterpreterIdentifier}/sessions/start
+/code-interpreters/{codeInterpreterIdentifier}/sessions/get
+/code-interpreters/{codeInterpreterIdentifier}/sessions/list
+/code-interpreters/{codeInterpreterIdentifier}/sessions/stop
+/code-interpreters/{codeInterpreterIdentifier}/tools/invoke
+/identities/GetWorkloadAccessToken
+/identities/GetWorkloadAccessTokenForJWT
+/identities/GetWorkloadAccessTokenForUserId
+/identities/oauth2/token
+/identities/api-key
+
+# AWS Bedrock AgentCore Runtime - agent container service contract (2026 additions)
+/invocations
+/ping
+/ws
+/mcp
+
+# AWS Bedrock AgentCore Control Plane (2026 additions)
+/runtimes/
+/gateways/
+/gateways/{gatewayIdentifier}/targets/
+/memories/create
+/browsers
+/code-interpreters
+/identities/CreateWorkloadIdentity
+/identities/CreateOauth2CredentialProvider
+/identities/CreateApiKeyCredentialProvider
+
+# Azure OpenAI / Foundry (2026 additions) - resource endpoint
+/openai/v1/conversations
+/openai/v1/conversations/{conversation_id}
+/openai/v1/conversations/{conversation_id}/items
+/openai/v1/conversations/{conversation_id}/items/{item_id}
+
+# Azure AI Foundry project data-plane (2026 additions) - project endpoint
+/api/projects/{project}/agents
+/api/projects/{project}/agents/{agent_name}
+/api/projects/{project}/agents/{agent_name}/import
+/api/projects/{project}/agents/{agent_name}/versions
+/api/projects/{project}/agents/{agent_name}/versions/{agent_version}
+/api/projects/{project}/agents/{agent_name}/operations
+/api/projects/{project}/agents/{agent_name}/operations/{operation_id}
+/api/projects/{project}/agents/{agent_name}/versions/{agent_version}/containers/default
+/api/projects/{project}/connections
+/api/projects/{project}/connections/{name}
+/api/projects/{project}/connections/{name}/getConnectionWithCredentials
+/api/projects/{project}/datasets
+/api/projects/{project}/datasets/{name}/versions
+/api/projects/{project}/datasets/{name}/versions/{version}
+/api/projects/{project}/deployments
+/api/projects/{project}/deployments/{name}
+/api/projects/{project}/evaluators
+/api/projects/{project}/evaluators/{name}/versions
+/api/projects/{project}/evaluators/{name}/versions/{version}
+/api/projects/{project}/evaluationrules
+/api/projects/{project}/evaluationrules/{id}
+/api/projects/{project}/evaluationtaxonomies
+/api/projects/{project}/evaluationtaxonomies/{name}
+/api/projects/{project}/indexes
+/api/projects/{project}/indexes/{name}/versions
+/api/projects/{project}/indexes/{name}/versions/{version}
+/api/projects/{project}/threads
+/api/projects/{project}/threads/{thread_id}
+/api/projects/{project}/threads/{thread_id}/messages
+/api/projects/{project}/threads/{thread_id}/runs
+/api/projects/{project}/threads/{thread_id}/runs/{run_id}
