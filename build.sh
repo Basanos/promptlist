@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Build ffuf/gobuster-ready wordlists from the source files in ./sources/
 set -euo pipefail
+export LC_ALL=C   # pin sort/collation for reproducible cross-platform output
 cd "$(dirname "$0")"
 
 SRC=sources

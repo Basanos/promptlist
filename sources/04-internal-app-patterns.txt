@@ -3721,3 +3721,59 @@
 
 
 # TOTAL UNIQUE PATHS: 3443
+
+# ============================================================
+# 2026 additions (researched 2026-10-14 against official specs)
+# ============================================================
+
+# === MCP — OAuth/OIDC discovery, path-aware well-known (2026 additions) ===
+/.well-known/oauth-authorization-server/{p}
+/.well-known/oauth-protected-resource/{p}
+/.well-known/openid-configuration/{p}
+/{p}/.well-known/openid-configuration
+
+# === A2A (Agent2Agent) protocol (2026 additions) ===
+/.well-known/agent-card.json
+/.well-known/agent.json
+
+# === vLLM (2026 additions) ===
+/inference/v1/generate
+/v1/chat/completions/batch
+/v1/chat/completions/render
+/v1/completions/render
+/v1/responses/render
+
+# === Cloudflare AI Gateway — management REST API (2026 additions) ===
+/client/v4/accounts/{p}/ai-gateway/logging-state
+/client/v4/accounts/{p}/ai-gateway/evaluation-types
+/client/v4/accounts/{p}/ai-gateway/custom-providers
+/client/v4/accounts/{p}/ai-gateway/custom-providers/{p}
+/client/v4/accounts/{p}/ai-gateway/custom-providers/costs
+/client/v4/accounts/{p}/ai-gateway/custom-providers/costs/{p}
+/client/v4/accounts/{p}/ai-gateway/billing/credit-balance
+/client/v4/accounts/{p}/ai-gateway/billing/invoice-history
+/client/v4/accounts/{p}/ai-gateway/billing/invoice-preview
+/client/v4/accounts/{p}/ai-gateway/billing/spending-limit
+/client/v4/accounts/{p}/ai-gateway/billing/topup
+/client/v4/accounts/{p}/ai-gateway/billing/topup/config
+/client/v4/accounts/{p}/ai-gateway/billing/topup/eligibility
+/client/v4/accounts/{p}/ai-gateway/billing/topup/limits
+/client/v4/accounts/{p}/ai-gateway/billing/topup/status
+/client/v4/accounts/{p}/ai-gateway/billing/usage-history
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/logs/{p}
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/logs/{p}/request
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/logs/{p}/response
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/datasets
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/datasets/{p}
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/evaluations
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/evaluations/{p}
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/custom-domains
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/custom-domains/{p}
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/provider_configs
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/provider_configs/{p}
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/routes
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/routes/{p}
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/routes/{p}/deployments
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/routes/{p}/versions
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/routes/{p}/versions/{p}
+/client/v4/accounts/{p}/ai-gateway/gateways/{p}/url/{p}
