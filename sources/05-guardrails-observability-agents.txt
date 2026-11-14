@@ -1,0 +1,114 @@
+# ============================================================
+# Guardrail / safety services, LLM observability, agent servers
+# Researched 2026-11-14. Every path below is taken from the vendor's official API
+# reference, OpenAPI spec, or route definitions in source. Nothing from blogs.
+# Deprecated routes are kept on purpose: self-hosted installs still serve them, and
+# a 410 Gone still fingerprints the service.
+# ============================================================
+
+# === NVIDIA NeMo Guardrails server (default :8000) ===
+# https://docs.nvidia.com/nemo/guardrails/latest/run-guardrailed-inference/using-fastapi-server/list-guardrail-configs.md
+/v1/rails/configs
+/v1/chat/completions
+# Actions Server (default :8001)
+# https://github.com/NVIDIA/NeMo-Guardrails/blob/develop/nemoguardrails/actions_server/actions_server.py
+/v1/actions/list
+/v1/actions/run
+
+# === Azure AI Content Safety (requires ?api-version=2024-09-01) ===
+# https://learn.microsoft.com/en-us/rest/api/contentsafety/text-operations/analyze-text
+# https://learn.microsoft.com/en-us/rest/api/contentsafety/text-operations/detect-text-protected-material
+/contentsafety/text:analyze
+/contentsafety/text:detectProtectedMaterial
+
+# === Lakera Guard (Check Point AI Guardrails) — Guard API ===
+# https://docs.lakera.ai/openapi/guard-api.json
+/v2/guard
+/v2/guard/results
+/v2/policies/health
+/v2/policies/lint
+# Lakera Platform API (base platform.lakera.ai/api)
+# https://docs.lakera.ai/openapi/platform-api.json
+/api/v1/policies
+/api/v1/policies/{policyId}
+/api/v1/custom-guardrails
+/api/v1-beta/projects
+/api/v1-beta/projects/{projectId}
+/api/v1-beta/logs
+/api/v1-beta/analytics
+# deprecated (410 Gone since Policies V2)
+/api/v1-beta/policies
+/api/v1-beta/policies/{policyId}
+
+# === Guardrails AI server (guardrails-api) ===
+# https://pypi.org/project/guardrails-api/  (docs name the param {guard_name}; code uses {id})
+/guards
+/guards/{id}
+/guards/{id}/validate
+/guards/{id}/openai/v1/chat/completions
+# deprecated
+/guards/{id}/history/{call_id}
+
+# === Protect AI LLM Guard API ===
+# https://github.com/protectai/llm-guard/blob/main/llm_guard_api/app/app.py
+/analyze/prompt
+/analyze/output
+/scan/prompt
+/scan/output
+/healthz
+/readyz
+/metrics
+
+# === Microsoft Presidio (containers listen on :3000; quickstart maps 5002 analyzer / 5001 anonymizer) ===
+# https://microsoft.github.io/presidio/getting_started/getting_started_text
+/analyze
+/recognizers
+/supportedentities
+/anonymize
+/deanonymize
+/anonymizers
+/deanonymizers
+/health
+
+# === Langfuse public API ===
+# https://cloud.langfuse.com/generated/api/openapi.yml
+/api/public/projects
+/api/public/otel/v1/traces
+/api/public/v2/observations
+/api/public/v3/scores
+/api/public/scores
+/api/public/experiments
+/api/public/experiment-items
+/api/public/v2/metrics
+/api/public/health
+# legacy — removed from Cloud, still served by self-hosted v3
+/api/public/traces
+/api/public/observations
+/api/public/sessions
+/api/public/ingestion
+
+# === Databricks Model Serving ===
+# https://docs.databricks.com/aws/en/machine-learning/model-serving/manage-serving-endpoints
+/api/2.0/serving-endpoints/{name}
+/api/2.0/serving-endpoints/{name}/config:stop
+/api/2.0/serving-endpoints/{name}/config:start
+/api/2.0/serving-endpoints/{name}/openapi
+/api/2.0/serving-endpoints/{name}/served-models/{served_model_name}/build-logs
+/api/2.0/serving-endpoints/{name}/served-models/{served_model_name}/logs
+/serving-endpoints/{name}/invocations
+
+# === Arize Phoenix ===
+# https://github.com/Arize-ai/phoenix/blob/main/schemas/openapi.json
+/v1/projects
+
+# === Comet Opik (self-hosted base /api; cloud base /opik/api) ===
+# https://www.comet.com/docs/opik/reference/rest-api/traces/create-trace
+/api/v1/private/traces
+/api/v1/private/traces/batch
+/opik/api/v1/private/traces
+/opik/api/v1/private/traces/batch
+
+# === Google Agent Development Kit (ADK) api_server ===
+# https://adk.dev/runtime/api-server/  (Go server uses :8080 and an api/ prefix)
+/list-apps
+/api/list-apps

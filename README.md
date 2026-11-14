@@ -8,14 +8,14 @@ Wordlists for discovering AI-related API endpoints with `ffuf`, `gobuster`, `fer
 
 | File | Lines | Use when |
 |---|---|---|
-| `ai-megafuzz.txt` | 379,291 | **BIG BOOM.** Cross-product: every common AI prefix (`v1`, `api/v2`, `openai/v1`, `inference/v1`, `llm/v1`, …) × every documented tail. Generates plausible combos that aren't in any single vendor's docs. 12MB. |
-| `ai-everything.txt` | 7,377 | Every documented full path + every prefix + every single segment, deduped. Observed paths only — no cross-product. |
-| `ai-endpoints-full.txt` | 6,322 | Full paths plus every intermediate prefix (`v1`, `v1/chat`, `v1/chat/completions`, etc.). |
-| `ai-endpoints.txt` | 5,498 | Full endpoint paths only. No leading `/`. Path params as `{name}`. |
-| `ai-prefixes.txt` | 6,282 | Every cumulative prefix of every endpoint — for finding API roots, version paths, and parent collections. |
-| `ai-endpoints-with-slash.txt` | 5,498 | Same as `ai-endpoints.txt` but each prefixed with `/`. |
-| `ai-endpoints-no-params.txt` | 3,551 | Paths truncated at the first `{param}` — clean collection paths only. |
-| `ai-segments.txt` | 1,614 | Single path segments — fuzz one directory at a time. |
+| `ai-megafuzz.txt` | 424,098 | **BIG BOOM.** Cross-product: every common AI prefix (`v1`, `api/v2`, `openai/v1`, `inference/v1`, `llm/v1`, …) × every documented tail. Generates plausible combos that aren't in any single vendor's docs. ~15MB. |
+| `ai-everything.txt` | 8,308 | Every documented full path + every prefix + every single segment, deduped. Observed paths only — no cross-product. |
+| `ai-endpoints-full.txt` | 7,135 | Full paths plus every intermediate prefix (`v1`, `v1/chat`, `v1/chat/completions`, etc.). |
+| `ai-endpoints.txt` | 6,173 | Full endpoint paths only. No leading `/`. Path params as `{name}`. |
+| `ai-prefixes.txt` | 7,092 | Every cumulative prefix of every endpoint — for finding API roots, version paths, and parent collections. |
+| `ai-endpoints-with-slash.txt` | 6,173 | Same as `ai-endpoints.txt` but each prefixed with `/`. |
+| `ai-endpoints-no-params.txt` | 3,767 | Paths truncated at the first `{param}` — clean collection paths only. |
+| `ai-segments.txt` | 1,760 | Single path segments — fuzz one directory at a time. |
 | `sources/` | — | Per-provider raw source files. Edit + rerun `build.sh` to regenerate. |
 
 ## Usage
@@ -41,11 +41,13 @@ ffuf -w ai-segments.txt -u https://target.example.com/api/FUZZ
 - **Cloud AI**: Azure OpenAI / AI Foundry (both legacy and v1 shapes), AWS Bedrock (runtime, control plane, agents, knowledge bases, flows), AWS SageMaker (runtime + control plane ops), HuggingFace (Hub, Inference API, dedicated Inference Endpoints v2/v3).
 - **Second-tier providers**: Cohere, Mistral, Replicate, Together, Groq, Perplexity, Stability, DeepSeek, xAI Grok, ElevenLabs, Fireworks, OpenRouter, Modal, RunPod, Lambda Labs, Anyscale, LangSmith.
 - **Vector DBs**: Pinecone, Weaviate, Qdrant, Chroma, Milvus.
-- **LLM gateways**: LiteLLM, Helicone, Portkey, Kong AI Gateway, Cloudflare AI Gateway, Vercel AI SDK.
+- **LLM gateways**: LiteLLM, Helicone, Portkey, Kong AI Gateway, Cloudflare AI Gateway, Vercel AI SDK, Databricks Model Serving.
+- **Guardrails / safety**: NVIDIA NeMo Guardrails (server + actions server), Azure AI Content Safety, Lakera Guard (Guard + Platform APIs), Guardrails AI server, Protect AI LLM Guard, Microsoft Presidio, AWS Bedrock Guardrails.
+- **LLM observability**: Langfuse (current + legacy self-hosted routes), Arize Phoenix, Comet Opik.
 - **Chat / agent frontends**: Open WebUI, LibreChat, AnythingLLM, NextChat, LobeChat, Chatbot UI, BetterChatGPT, Open Assistant.
-- **Agent frameworks**: LangServe, LangGraph Cloud, LlamaIndex deploy, AutoGPT, CrewAI, AutoGen Studio, Hayhooks, Microsoft Bot Framework, Rasa, Dialogflow ES/CX.
+- **Agent frameworks**: LangServe, LangGraph Cloud, LlamaIndex deploy, AutoGPT, CrewAI, AutoGen Studio, Hayhooks, Google ADK api_server, Microsoft Bot Framework, Rasa, Dialogflow ES/CX.
 - **Model serving**: Triton, vLLM, TGI, Ollama, llama.cpp server, LocalAI, KServe v1+v2, Ray Serve, TorchServe, Cortex, BentoML.
-- **MCP**: Stream/SSE transports, JSON-RPC method paths, OAuth discovery `/.well-known/*`.
+- **MCP**: Stream/SSE transports, JSON-RPC method paths, OAuth discovery `/.well-known/*`. A2A agent cards.
 - **AI SaaS**: Notion AI, Slack AI, Salesforce Einstein, IBM watsonx, OctoAI.
 
 ## Regenerating
@@ -56,4 +58,4 @@ Edit any file in `sources/`, then:
 ./build.sh
 ```
 
-The script strips comments/blanks/leading slashes, dedupes, and produces all four output files.
+The script strips comments/blanks/leading slashes, dedupes, and produces all eight output files.
