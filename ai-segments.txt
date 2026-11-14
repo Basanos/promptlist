@@ -2,6 +2,7 @@
 -
 .bot
 .well-known
+2.0
 2fa
 302ai
 3d
@@ -184,6 +185,8 @@ analyze
 annotation-queues
 annotationSpecs
 annotations
+anonymize
+anonymizers
 answers
 anthropic
 anthropic_beta_headers
@@ -299,6 +302,7 @@ browser-extension
 browsers
 budget
 budgets
+build-logs
 build-workflows
 bulk
 bulk-delete
@@ -413,6 +417,7 @@ containers
 content
 content-filters
 content_provenance_checks
+contentsafety
 context
 contexts
 contextualized-embeddings
@@ -466,6 +471,7 @@ current
 custom
 custom-app-name
 custom-domains
+custom-guardrails
 custom-model-deployments
 custom-models
 custom-providers
@@ -489,6 +495,8 @@ datasets-tags-by-type
 datasources
 db
 deactivate
+deanonymize
+deanonymizers
 debug
 decide
 decisions
@@ -622,6 +630,7 @@ executions
 exists
 exotel
 expanded
+experiment-items
 experimental
 experiments
 explanations
@@ -751,8 +760,10 @@ group
 group-mappings
 grouped
 groups
+guard
 guardrail
 guardrails
+guards
 handle
 hangouts
 hangup
@@ -881,7 +892,9 @@ license
 likes
 limits
 link
+lint
 list
+list-apps
 list-foundation-model-agreement-offers
 list-models
 list-resources
@@ -1014,6 +1027,7 @@ object-detection
 objects
 observability
 observables
+observations
 ocr
 offsets
 oidc
@@ -1033,6 +1047,7 @@ openid-configuration
 openrouter
 opensearch.xml
 operations
+opik
 optimize-prompt
 options
 options-counts
@@ -1117,6 +1132,7 @@ presets
 preupload
 preview
 preview-defaults
+private
 private-connections
 private-endpoints
 private-service
@@ -1172,6 +1188,7 @@ rag-query
 ragCorpora
 ragEngineConfig
 ragFiles
+rails
 rankings
 rasa
 rate-limits
@@ -1189,6 +1206,7 @@ realtime
 realtimeapi
 reasoningEngines
 rebuild
+recognizers
 recommend
 records
 recover
@@ -1354,12 +1372,14 @@ semantic
 sentence-similarity
 sentiment
 serve-status
+served-models
 server
 servers
 service-account
 service_accounts
 services
 services-v2
+serving-endpoints
 session
 sessions
 set
@@ -1474,6 +1494,7 @@ supervisedFineTuningJobs
 support-email
 supported-models
 supported_openai_params
+supportedentities
 swagger
 swagger.json
 sync
